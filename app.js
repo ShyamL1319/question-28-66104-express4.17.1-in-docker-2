@@ -21,6 +21,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api/add', (req, res)=>{
+  const {number1, number2 } = req.body;
+  res.status(200).json({"sum" : (number1+number2)});
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
